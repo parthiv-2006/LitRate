@@ -1,6 +1,14 @@
 const express = require('express');
+const dotenv = require("dotenv")
+const connectDB = require("./config/db.js")
+
+dotenv.config()
+connectDB()
+
 const app = express();
-const port = 5000; // We'll move this to a .env file later
+
+// 3. Use the PORT from .env, or 5000 as a default
+const port = process.env.PORT || 5000;
 
 // A simple "hello world" route to make sure our server is working
 app.get('/', (req, res) => {
